@@ -13,7 +13,6 @@ public class SpringbootBackendApplication {
 	}
 }
 
-
 //Composition of SpringBootApplication:
 //@SpringBootConfiguration
 //@EnableAutoConfiguration
