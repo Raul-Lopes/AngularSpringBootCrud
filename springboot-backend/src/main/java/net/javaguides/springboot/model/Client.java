@@ -18,11 +18,11 @@ public class Client {
 
     @Column(name = "email_id")
     private String emailId;
+
     @Column(name = "credit_limit")
     private double creditLimit;
 
     public Client() {
-
     }
 
     public Client(String firstName, String lastName, String emailId, double creditLimit) {
