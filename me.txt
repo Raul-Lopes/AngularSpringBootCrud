@@ -1,0 +1,61 @@
+- Run backend at first
+
+
+- https://www.youtube.com/watch?v=G46fjVzQ7BQ&list=PLGRDMO4rOGcNzi3CpBWsCdQSzbjdWWy-f
+ 
+
+
+
+
+=====================
+
+Step 1: Remove existing Angular installations
+=========================================================
+# Uninstall global Angular CLI
+npm uninstall -g @angular/cli
+
+# Clear npm cache
+npm cache clean --force
+
+# Remove node_modules and package-lock.json from your project
+cd E:\JsAngular\Expense Manager
+rm -rf node_modules
+rm package-lock.json
+
+
+Step 2: Install the latest Angular CLI globally
+===============================================
+# Install latest Angular CLI (for Angular 19)
+npm install -g @angular/cli@19
+
+
+Step 4: Upgrade your project
+============================
+# Navigate to your project
+cd E:\JsAngular\Expense Manager
+
+# Run the Angular update command
+ng update @angular/core@19 @angular/cli@19
+
+# Alternatively, if you want to update all packages:
+ng update --all --force
+
+
+//-----------------------
+npm install bootstrap
+
+//--------------------------
+
+ng new reservation-app
+angular-frontend
+
+//--------------------------
+npm install -g @angular/cli
+
+npm cache clean --force
+
+npm install
+
+ng serve  /  npm start
+ 
+ng cache clean
