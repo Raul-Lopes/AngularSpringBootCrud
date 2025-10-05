@@ -25,11 +25,14 @@ The application includes views for listing clients and creating new ones, as sho
 
 ---
 
-![Client List](src/assets/images/ClientList.png)
+- Client List
+
+![Client List](/frontend/src/assets/images/ClientList.png)
 
 ---
 
-![Create Client](src/assets/images/CreateClient.png)
+- Create Client
+
+![Create Client](frontend/src/assets/images/CreateClient.png)
 
 **Angular with Spring Boot CRUD - 2025**
-
