@@ -1,6 +1,9 @@
-package net.javaguides.springboot.model;
+package net.raullopes.springboot.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "clients")
@@ -11,22 +14,26 @@ public class Client {
     private long id;
 
     @Column(name = "first_name")
+    @NotBlank(message = "First name is required")
     private String firstName;
 
     @Column(name = "last_name")
+    @NotBlank(message = "Last name is required")
     private String lastName;
 
     @Column(name = "email_id")
+    @NotBlank(message = "Email is required")
+    @Email(message = "Invalid email format")
     private String emailId;
 
     @Column(name = "credit_limit")
+    @Min(value = 0, message = "Credit limit must be positive")
     private double creditLimit;
 
     public Client() {
     }
 
     public Client(String firstName, String lastName, String emailId, double creditLimit) {
-        super();
         this.firstName = firstName;
         this.lastName = lastName;
         this.emailId = emailId;
@@ -65,7 +72,11 @@ public class Client {
         this.emailId = emailId;
     }
 
-    public double getCreditLimit() { return creditLimit; }
+    public double getCreditLimit() {
+        return creditLimit;
+    }
 
-    public void setCreditLimit(double creditLimit) { this.creditLimit = creditLimit; }
+    public void setCreditLimit(double creditLimit) {
+        this.creditLimit = creditLimit;
+    }
 }

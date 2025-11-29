@@ -1,5 +1,5 @@
 // src/app/app.component.ts
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -13,8 +13,10 @@ import { RouterModule } from '@angular/router';
 })
 export class AppComponent {
   title = 'frontend';
-  information = 'Angular with Spring Boot CRUD';
-  year = new Date().getFullYear();
+
+  information = signal('©  Raul Lopes. All rights reserved. Built for portfolio and educational purposes. Angular and Spring Boot CRUD');
+  year = signal(new Date().getFullYear().toString());
+
   constructor(private router: Router) { }
   navigateToClients() {
     this.router.navigate(['/clients']);

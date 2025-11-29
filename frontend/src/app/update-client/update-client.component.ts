@@ -1,7 +1,7 @@
 // FILE: frontend/src/app/update-client/update-client.component.ts
 import { Component, OnInit } from '@angular/core';
 import { ClientService } from '../client.service';
-import { ClientsBean } from '../clientsBean';
+import { Client } from '../client.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -16,7 +16,13 @@ import { CommonModule } from '@angular/common';
 
 export class UpdateClientComponent implements OnInit {
   id!: number;
-  client: ClientsBean = new ClientsBean();
+  client: Client = {
+    id: 0,
+    firstName: '',
+    lastName: '',
+    emailId: '',
+    creditLimit: 0
+  };
 
   constructor(
     private clientService: ClientService,

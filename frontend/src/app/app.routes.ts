@@ -1,14 +1,21 @@
-// FILE: frontend/src/app/app.routes.ts
 import { Routes } from '@angular/router';
-import { ClientListComponent } from './client-list/client-list.component';
-import { CreateClientComponent } from './create-client/create-client.component';
-import { UpdateClientComponent } from './update-client/update-client.component';
-import { ClientDetailsComponent } from './client-details/client-details.component';
 
 export const routes: Routes = [
-  { path: 'clients', component: ClientListComponent },
-  { path: 'create-client', component: CreateClientComponent },
-  { path: '', redirectTo: 'clients', pathMatch: 'full' },
-  { path: 'update-client/:id', component: UpdateClientComponent },
-  { path: 'client-details/:id', component: ClientDetailsComponent }
+  {
+    path: 'clients',
+    loadComponent: () => import('./client-list/client-list.component').then(m => m.ClientListComponent)
+  },
+  {
+    path: 'create-client',
+    loadComponent: () => import('./create-client/create-client.component').then(m => m.CreateClientComponent)
+  },
+  {
+    path: 'update-client/:id',
+    loadComponent: () => import('./update-client/update-client.component').then(m => m.UpdateClientComponent)
+  },
+  {
+    path: 'client-details/:id',
+    loadComponent: () => import('./client-details/client-details.component').then(m => m.ClientDetailsComponent)
+  },
+  { path: '', redirectTo: 'clients', pathMatch: 'full' }
 ];

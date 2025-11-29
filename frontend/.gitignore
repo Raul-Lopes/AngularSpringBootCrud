@@ -42,3 +42,5 @@ testem.log
 Thumbs.db
 
 c2.bat
+
+package-lock.json
