@@ -1,6 +1,6 @@
 // FILE: frontend/src/app/client-list/client-list.component.ts
 import { Component, OnInit } from '@angular/core';
-import { ClientsBean } from '../clientsBean';
+import { Client } from '../client.model';
 import { ClientService } from '../client.service';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule, CurrencyPipe } from '@angular/common';
@@ -13,7 +13,7 @@ import { CommonModule, CurrencyPipe } from '@angular/common';
   styleUrls: ['./client-list.component.css']
 })
 export class ClientListComponent implements OnInit {
-  clients: ClientsBean[] = [];
+  clients: Client[] = [];
 
   constructor(
     private clientService: ClientService,

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ClientsBean } from '../clientsBean';
+import { Client } from '../client.model';
 import { ClientService } from '../client.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -13,7 +13,13 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./create-client.component.css']
 })
 export class CreateClientComponent {
-  client: ClientsBean = new ClientsBean();
+  client: Client = {
+    id: 0,
+    firstName: '',
+    lastName: '',
+    emailId: '',
+    creditLimit: 0
+  };
 
   constructor(
     private clientService: ClientService,

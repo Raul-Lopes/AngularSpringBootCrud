@@ -1,6 +1,6 @@
 // Importing necessary modules and classes from Angular core, router, and services.
 import { Component, OnInit } from '@angular/core';
-import { ClientsBean } from '../clientsBean'; // Importing the model class representing a client.
+import { Client } from '../client.model'; // Importing the model class representing a client.
 import { ActivatedRoute } from '@angular/router'; // Provides access to route parameters.
 import { ClientService } from '../client.service'; // Service for interacting with client data.
 import { CommonModule, CurrencyPipe } from '@angular/common';
@@ -15,7 +15,13 @@ import { CommonModule, CurrencyPipe } from '@angular/common';
 
 export class ClientDetailsComponent implements OnInit {
   id!: number; // Stores the client ID retrieved from the route parameters.
-  client: ClientsBean = new ClientsBean(); // Represents the client data to be displayed.
+  client: Client = {
+    id: 0,
+    firstName: '',
+    lastName: '',
+    emailId: '',
+    creditLimit: 0
+  };
 
   // Constructor injecting the required services for route handling and data retrieval.
   constructor(
