@@ -1,5 +1,7 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ClientListComponent } from './client-list.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { Router } from '@angular/router';
 
 describe('ClientListComponent', () => {
   let component: ClientListComponent;
@@ -7,7 +9,15 @@ describe('ClientListComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [ClientListComponent] // standalone component
+      imports: [ClientListComponent, HttpClientTestingModule], // standalone component
+      providers: [
+        {
+          provide: Router,
+          useValue: {
+            navigate: jasmine.createSpy('navigate')
+          }
+        }
+      ]
     }).compileComponents();
   }));
 
