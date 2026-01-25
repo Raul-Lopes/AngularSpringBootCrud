@@ -7,5 +7,4 @@ import net.raullopes.springboot.model.Client;
 
 @Repository
 public interface ClientRepository extends JpaRepository<Client, Long>{
-
 }

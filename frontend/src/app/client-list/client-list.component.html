@@ -12,18 +12,31 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let client of clients">
-            <td> {{ client.firstName }} </td>
-            <td> {{ client.lastName }} </td>
-            <td> {{ client.emailId }} </td>
-            <td class="text-end"> {{ client.creditLimit | currency:'EUR' }} </td>
-            <td>
-                <button (click)="updateClient(client.id)" class="btn btn-info"> Update</button>
-                <button (click)="deleteClient(client.id)" class="btn btn-danger" style="margin-left: 10px">
-                    Delete</button>
-                <button (click)="clientDetails(client.id)" class="btn btn-info" style="margin-left: 10px">
-                    View</button>
-            </td>
-        </tr>
+        @if (isLoading()) {
+            <tr>
+                <td colspan="5" class="text-center">Loading clients...</td>
+            </tr>
+        } @else {
+            @for (client of clients(); track client.id) {
+                <tr>
+                    <td> {{ client.firstName }} </td>
+                    <td> {{ client.lastName }} </td>
+                    <td> {{ client.emailId }} </td>
+                    <td class="text-end"> {{ client.creditLimit | currency:'EUR' }} </td>
+                    <td>
+                        <button (click)="updateClient(client.id)" class="btn btn-info"> 
+                            Update</button>
+                        <button (click)="deleteClient(client.id)" class="btn btn-danger" style="margin-left: 10px">
+                            Delete</button>
+                        <button (click)="clientDetails(client.id)" class="btn btn-info" style="margin-left: 10px">
+                            View</button>
+                    </td>
+                </tr>
+            } @empty {
+                <tr>
+                    <td colspan="5" class="text-center">No clients found</td>
+                </tr>
+            }
+        }
     </tbody>
 </table>

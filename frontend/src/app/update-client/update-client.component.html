@@ -2,31 +2,53 @@
   <h3 class="text-center"> Update Client </h3>
   <hr>
   <br>
-  <form (ngSubmit)="onSubmit()">
+  @if (isLoading()) {
+    <div class="text-center">Loading client data...</div>
+  } @else {
+    <form (ngSubmit)="onSubmit()">
 
-    <div class="form-group">
-      <label> First Name</label>
-      <input type="text" class="form-control" id="firstName" [(ngModel)]="client.firstName" name="firstName">
-    </div>
+      <div class="form-group">
+        <label> First Name</label>
+        <input type="text" class="form-control" id="firstName" 
+               [value]="firstName()" 
+               (input)="firstName.set($any($event.target).value)" 
+               name="firstName">
+      </div>
 
-    <div class="form-group">
-      <label> Last Name</label>
-      <input type="text" class="form-control" id="lastName" [(ngModel)]="client.lastName" name="lastName">
-    </div>
+      <div class="form-group">
+        <label> Last Name</label>
+        <input type="text" class="form-control" id="lastName" 
+               [value]="lastName()" 
+               (input)="lastName.set($any($event.target).value)" 
+               name="lastName">
+      </div>
 
-    <div class="form-group">
-      <label> Email Id</label>
-      <input type="text" class="form-control" id="emailId" [(ngModel)]="client.emailId" name="emailId">
-    </div>
+      <div class="form-group">
+        <label> Email Id</label>
+        <input type="text" class="form-control" id="emailId" 
+               [value]="emailId()" 
+               (input)="emailId.set($any($event.target).value)" 
+               name="emailId">
+      </div>
 
-    <div class="form-group">
-      <label> Credit Limit</label>
-      <input type="text" class="form-control" id="creditLimit" [(ngModel)]="client.creditLimit" name="creditLimit">
-    </div>
+      <div class="form-group">
+        <label> Credit Limit</label>
+        <input type="number" class="form-control" id="creditLimit" 
+               [value]="creditLimit()" 
+               (input)="creditLimit.set(+$any($event.target).value)" 
+               name="creditLimit">
+      </div>
 
-    <br>
-    <div>
-      <button class="btn btn-success" type="submit">Submit</button>
-    </div>
-  </form>
+      <br>
+      <div>
+        <button class="btn btn-success" type="submit" [disabled]="!isFormValid() || isSubmitting()">
+          @if (isSubmitting()) {
+            Updating...
+          } @else {
+            Submit
+          }
+        </button>
+      </div>
+    </form>
+  }
 </div>
